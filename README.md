@@ -1,6 +1,8 @@
 # WebGL Third person movement
 Third person movement mechanism written in Three.js and WebGL.
 
+![til](./static/demo/fox.gif)
+
 ## Setup
 ``` bash
 # Install dependencies
