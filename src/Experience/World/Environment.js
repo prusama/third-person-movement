@@ -20,26 +20,27 @@ export default class Environment {
     setSunLight() {
         this.sunlight = new THREE.DirectionalLight('#ffffff', 4)
         this.sunlight.castShadow = true
-        this.sunlight.shadow.camera.far = 15
+        this.sunlight.shadow.camera.far = 50
         this.sunlight.shadow.camera.width = 15
-        this.sunlight.shadow.mapSize.set(1024, 1024)
+        this.sunlight.shadow.camera.top = 10;
+        this.sunlight.shadow.camera.bottom = -10;
+        this.sunlight.shadow.camera.left = -20;
+        this.sunlight.shadow.camera.right = 20;
+        this.sunlight.shadow.mapSize.set(2048, 2048)
         this.sunlight.shadow.normalBias = 0.05
-        this.sunlight.position.set(3.5, 2, - 1.25)
+        this.sunlight.position.set(25, 10, - 1.25)
         this.scene.add(this.sunlight)
-
-        const lightHelper = new THREE.CameraHelper(this.sunlight.shadow.camera);
-        this.scene.add(lightHelper);
 
         // Debug
         if (this.debug.active) {
             this.debugFolder
                 .add(this.sunlight, 'intensity', 0, 10, 0.001).name('sunlightIntensity');
             this.debugFolder
-                .add(this.sunlight.position, 'x', -5, 5, 0.001).name('sunlightX');
+                .add(this.sunlight.position, 'x', -30, 30, 0.001).name('sunlightX');
             this.debugFolder
-                .add(this.sunlight.position, 'y', -5, 5, 0.001).name('sunlightY');
+                .add(this.sunlight.position, 'y', -30, 30, 0.001).name('sunlightY');
             this.debugFolder
-                .add(this.sunlight.position, 'z', -5, 5, 0.001).name('sunlightZ');
+                .add(this.sunlight.position, 'z', -30, 30, 0.001).name('sunlightZ');
         }
     }
 
